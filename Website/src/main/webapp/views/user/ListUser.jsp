@@ -87,7 +87,6 @@
                                             </nav>
                                         </div>
                                     </div>
-                                    <!-- </form> -->
                                 </div>
 
                                 <div class="card-body">
@@ -118,12 +117,12 @@
                                                         <td>${user.getRole()}</td>
                                                         <td>${user.getCreated_at()}</td>
                                                         <td>${user.getUpdated_at()}</td>
-                                                        <th>
+                                                        <td>
                                                             <a href="./GoPageEditUserServlet?id=${user.getId()}" type="button" class="btn btn-outline-info">Edit</a>
-                                                        </th>
-                                                        <th>
+                                                        </td>
+                                                        <td>
                                                             <a href="#" type="button" class="btn btn-outline-danger" onClick="deleteUser(${user.getId()})">Delete</a>
-                                                        </th>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>

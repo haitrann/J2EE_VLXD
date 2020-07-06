@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="form" id="" action="${pageContext.request.contextPath}/addcustomer" method="POST">
+                            <form class="form" id="" action="./CreateNewCustomerServlet" method="POST">
                                
                                 <div class="row">
                                     <div class="col-md-5">

@@ -101,7 +101,7 @@
 
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fa fa-users"></i>
+                        <i class="nav-icon fa fa-line-chart"></i>
                         <p>
                             Customer
                             <i class="right fa fa-angle-left"></i>
@@ -109,57 +109,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/listcustomer" class="nav-link  effect-underline ">
+                            <a href="./ListCustomerServlet" class="nav-link  effect-underline ">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>List Customer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/addcustomer" class="nav-link  effect-underline">
+                            <a href="./GoPageCreateNewCustomerServlet" class="nav-link  effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Create Customer</p>
-                            </a>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/editcustomer" class="nav-link effect-underline">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Detail Customer</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="nav-icon fa fa-line-chart"></i>
-                        <p>
-                            Category
-                            <i class="right fa fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/listcategory" class="nav-link  effect-underline ">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>List Category</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/addcategory" class="nav-link  effect-underline">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Create Category</p>
-                            </a>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/editcategory" class="nav-link effect-underline">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Detail Category</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                
 
                 <li class="header">&nbsp;</li>
                 <li><a href="#">&nbsp;</a></li>
