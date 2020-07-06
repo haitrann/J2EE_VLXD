@@ -1,6 +1,7 @@
 package vlxd.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
@@ -30,22 +31,21 @@ public class CreateNewUserServlet extends HttpServlet {
 		String role = request.getParameter("role").trim();
 		String passText = request.getParameter("password").trim();
 		String confirmPassword = request.getParameter("confirm_password").trim();
-		
-		System.out.println(confirmPassword); 
 
 		ServletContext context = request.getSession().getServletContext();
 		UserBO userBO = new UserBO(context);
 		ArrayList<UserDTO> userCheck = userBO.checkUserAvailable(username);
 
-		if (confirmPassword == passText && userCheck.isEmpty() == true) {
+		if (confirmPassword.equals(passText) == true && userCheck.isEmpty() == true && username.length() >= 6
+				&& name.length() > 0 && phone.length() > 9 && role.length() > 0) {
 			String password = Utils.Encrypt(passText);
 			userBO.createUser(name, email, phone, username, role, password);
 		} else {
-//			PrintWriter out = response.getWriter();
-//			out.println("<script type=\"text/javascript\">");
-//			out.println("alert('User or password incorrect');");
-//			out.println("location='./GoPageCreateNewUserServlet';");
-//			out.println("</script>");
+			PrintWriter out = response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Failed to create new user');");
+			out.println("location='./GoPageCreateNewUserServlet';");
+			out.println("</script>");
 			return;
 		}
 
