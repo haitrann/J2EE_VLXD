@@ -1,5 +1,3 @@
-<%@page import="ql.vatlieuxaydung.models.CategoryModel"%>
-
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -49,7 +47,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="form" id="" action="./addcategory" method="POST">
+                            <form class="form" id="" action="./CreateNewCategoryServlet" method="POST">
                                
                                 <div class="row">
                                     <div class="col-md-5">
@@ -65,23 +63,7 @@
 
                                     <div class="col-md-2"></div>
 
-                                    <div class="col-md-5">
-                                        <div class="form-group ">
-                                            <label class="control-label">Parent Name</label>
-                                            <div>
-                                                 <select id="parent_id" name="parent_id" class="form-control">
-                                                            <option></option>
-                                                            <%ArrayList<CategoryModel> cus = (ArrayList<CategoryModel>)request.getAttribute("listcategory");
-                                                            for (CategoryModel c : cus) {%>
-                                                                <option value="<%=c.getID()%>"><%=c.getName()%></option>
-                                                                
-                                                                <%}%>
-                                                                
-                                                        </select>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="col-md-5"></div>
                                 </div>
 
 

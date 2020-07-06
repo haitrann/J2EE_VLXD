@@ -29,12 +29,12 @@ public class UserBO {
 			userLogined = mapper.loginUser(user);
 
 		} catch (Exception e) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, e);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception e) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, e);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, e);
 			}
 		}
 		return userLogined;
@@ -48,12 +48,12 @@ public class UserBO {
 			users = mapper.checkUserAvailable(username);
 
 		} catch (Exception e) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, e);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception e) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, e);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, e);
 			}
 		}
 		return users;
@@ -91,12 +91,12 @@ public class UserBO {
 			mapper = new UserMapper();
 			users = mapper.listUser();
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return users;
@@ -109,12 +109,12 @@ public class UserBO {
 			mapper = new UserMapper();
 			users = mapper.searchUserById(id);
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return users;
@@ -127,12 +127,12 @@ public class UserBO {
 			mapper = new UserMapper();
 			users = mapper.searchUserByName(name);
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return users;
@@ -154,12 +154,12 @@ public class UserBO {
 			mapper.editUser(user);
 
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 	}
@@ -174,12 +174,12 @@ public class UserBO {
 			mapper = new UserMapper();
 			mapper.deleteUser(user);
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 	}

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import vlxd.dto.VendorDTO;
 
 public class VendorMapper extends DBMapper {
+	
 	public VendorMapper() throws Exception {
 		super(); // call constructor DBMapper -- get connection
 	}

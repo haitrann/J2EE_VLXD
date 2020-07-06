@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vlxd.bo.UserBO;
+import vlxd.bo.CategoryBO;
 
-@WebServlet(name = "EditUserServlet", urlPatterns = { "/EditUserServlet" })
-public class EditUserServlet extends HttpServlet {
+@WebServlet(name = "EditCategoryServlet", urlPatterns = { "/EditCategoryServlet" })
+public class EditCategoryServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -22,16 +22,12 @@ public class EditUserServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String username = request.getParameter("username");
-		String role = request.getParameter("role");
 
 		ServletContext context = request.getSession().getServletContext();
-		UserBO userBO = new UserBO(context);
-		userBO.editUser(id, name, email, phone, role, username);
-
-		response.sendRedirect("./ListUserServlet");
+		CategoryBO categoryBO = new CategoryBO(context);
+		categoryBO.editCategory(id, name);
+		
+		response.sendRedirect("./ListCategoryServlet");
 	}
 
 }
