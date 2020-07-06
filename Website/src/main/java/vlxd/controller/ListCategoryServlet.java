@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vlxd.bo.VendorBO;
-import vlxd.dto.VendorDTO;
+import vlxd.bo.CategoryBO;
+import vlxd.dto.CategoryDTO;
 
-@WebServlet(name = "ListVendorServlet", urlPatterns = { "/ListVendorServlet" })
-public class ListVendorServlet extends HttpServlet {
+@WebServlet(name = "ListCategoryServlet", urlPatterns = { "/ListCategoryServlet" })
+public class ListCategoryServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,21 +24,13 @@ public class ListVendorServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		ServletContext context = request.getSession().getServletContext();
-		VendorBO vendorBO = new VendorBO(context);
-		ArrayList<VendorDTO> vendors = new ArrayList<>();
+		CategoryBO categoryBO = new CategoryBO(context);
+		ArrayList<CategoryDTO> categories = new ArrayList<>();
 
-		if (request.getParameterMap().isEmpty()) {
-			vendors = vendorBO.listVendor();
-		}
+		categories = categoryBO.listCategory();
 
-		if (request.getParameterMap().containsKey("searchByName")) {
-			String name = request.getParameter("searchByName");
-			vendors = vendorBO.searchVendorByName(name);
-		}
-
-		request.setAttribute("vendors", vendors);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/ListVendor.jsp");
+		request.setAttribute("categories", categories);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/category/ListCategory.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

@@ -25,7 +25,7 @@ public class ListUserServlet extends HttpServlet {
 
 		ServletContext context = request.getSession().getServletContext();
 		UserBO userBO = new UserBO(context);
-		ArrayList<UserDTO> users = new ArrayList<UserDTO>();
+		ArrayList<UserDTO> users = new ArrayList<>();
 
 		if (request.getParameterMap().isEmpty()) {
 			users = userBO.listUser();

@@ -77,30 +77,23 @@
 
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fa fa-product-hunt"></i>
+                        <i class="nav-icon fa fa-line-chart"></i>
                         <p>
-                            Product
+                            Category
                             <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/listproduct" class="nav-link  effect-underline ">
+                            <a href="./ListCategoryServlet" class="nav-link  effect-underline ">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>List Product</p>
+                                <p>List Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/addproduct" class="nav-link  effect-underline">
+                            <a href="./GoPageCreateNewCategoryServlet" class="nav-link  effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Create Product</p>
-                            </a>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/editproduct" class="nav-link effect-underline">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Detail Product</p>
+                                <p>Create Category</p>
                             </a>
                         </li>
                     </ul>

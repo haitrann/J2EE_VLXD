@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import vlxd.dto.UserDTO;
 
 public class UserMapper extends DBMapper {
+	
 	public UserMapper() throws Exception {
 		super(); // call constructor DBMapper -- get connection
 	}

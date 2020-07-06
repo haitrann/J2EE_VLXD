@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
 
-import vlxd.dto.UserDTO;
 import vlxd.dto.VendorDTO;
 import vlxd.mapper.VendorMapper;
 
@@ -66,12 +65,12 @@ public class VendorBO {
 			mapper = new VendorMapper();
 			vendors = mapper.searchVendorById(id);
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return vendors;
@@ -84,12 +83,12 @@ public class VendorBO {
 			mapper = new VendorMapper();
 			vendors = mapper.searchVendorByName(name);
 		} catch (Exception ex) {
-			Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(UserDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return vendors;
@@ -130,12 +129,12 @@ public class VendorBO {
 			mapper.deleteVendor(vendor);
 			
 		} catch (Exception ex) {
-			Logger.getLogger(VendorDTO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
 				mapper.closeConnection();
 			} catch (Exception ex) {
-				Logger.getLogger(VendorDTO.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 	}
