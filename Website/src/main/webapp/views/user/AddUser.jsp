@@ -124,7 +124,7 @@
 													<label class="control-label">Retype password</label> <span
 														id='confirm_password_message'></span>
 													<div>
-														<input id="confirm_password" type="password"
+														<input id="confirm_password" name="confirm_password" type="password"
 															class="form-control" maxlength="255" value=""
 															placeholder="Retype password">
 													</div>
