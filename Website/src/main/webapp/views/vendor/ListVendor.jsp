@@ -113,12 +113,12 @@
                                                         <td>${vendor.getDebt()}</td>                                                        
                                                         <td>${vendor.getCreated_at()}</td>
                                                         <td>${vendor.getUpdated_at()}</td>
-                                                        <th>
+                                                        <td>
                                                             <a href="./GoPageEditVendorServlet?id=${vendor.getId()}" type="button" class="btn btn-outline-info">Edit</a>
-                                                        </th>
-                                                        <th>
+                                                        </td>
+                                                        <td>
                                                             <a href="#" type="button" class="btn btn-outline-danger" onClick="deleteVendor(${vendor.getId()})">Delete</a>
-                                                        </th>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
 											</tbody>

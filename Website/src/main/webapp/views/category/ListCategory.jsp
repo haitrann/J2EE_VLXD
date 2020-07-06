@@ -94,12 +94,15 @@
 													<tr>
 														<td>${category.getId()}</td>
 														<td>${category.getName()}</td>
-														<th><a
-															href="./GoPageEditCategoryServlet?id=${category.getId()}"
-															type="button" class="btn btn-outline-info">Edit</a></th>
-														<th><a href="#" type="button"
+														<td>
+															<a href="./GoPageEditCategoryServlet?id=${category.getId()}"
+															type="button" class="btn btn-outline-info">Edit</a>
+														</td>
+														<td>
+															<a href="#" type="button"
 															class="btn btn-outline-danger"
-															onClick="deleteCategory(${category.getId()})">Delete</a></th>
+															onClick="deleteCategory(${category.getId()})">Delete</a>
+														</td>
 													</tr>
 												</c:forEach>
 											</tbody>

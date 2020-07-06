@@ -16,7 +16,7 @@ public class UserMapper extends DBMapper {
 	public UserDTO loginUser(UserDTO user) {
 		UserDTO userLogined = new UserDTO();
 		try {
-			String sqlStr = "SELECT * FROM user WHERE username=? AND password=? LIMIT 1";
+			String sqlStr = "SELECT * FROM user WHERE username=? AND password=? AND status=1 LIMIT 1";
 
 			PreparedStatement preparedStmt = getConnection().prepareStatement(sqlStr);
 			preparedStmt.setString(1, user.getUsername());
@@ -69,7 +69,7 @@ public class UserMapper extends DBMapper {
 		ArrayList<UserDTO> users = new ArrayList<>();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM user WHERE username='" + username + "' LIMIT 1";
+			String sqlStr = "SELECT * FROM user WHERE username='" + username + "' AND status=1 LIMIT 1";
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
 				UserDTO user = new UserDTO();
