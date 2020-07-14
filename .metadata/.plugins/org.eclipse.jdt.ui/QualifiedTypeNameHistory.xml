@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="vlxd.utility.Utils"/>
+<fullyQualifiedTypeName name="vlxd.bo.UserBO"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Statement"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.Time"/>
+<fullyQualifiedTypeName name="vlxd.mapper.UserMapper"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="com.google.protobuf.Timestamp"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+<fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Result"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletException"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+<fullyQualifiedTypeName name="java.lang.Boolean"/>
+<fullyQualifiedTypeName name="vlxd.mapper.VendorMapper"/>
+<fullyQualifiedTypeName name="vlxd.bo.VendorBO"/>
+<fullyQualifiedTypeName name="vlxd.dto.VendorDTO"/>
+<fullyQualifiedTypeName name="vlxd.dto.UserDTO"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="vlxd.mapper.CategoryMapper"/>
+<fullyQualifiedTypeName name="vlxd.mapper.CustomerMapper"/>
+<fullyQualifiedTypeName name="vlxd.dto.CustomerDTO"/>
+<fullyQualifiedTypeName name="vlxd.bo.CustomerBO"/>
+<fullyQualifiedTypeName name="vlxd.mapper.DBMapper"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="vlxd.mapper.ProductMapper"/>
+<fullyQualifiedTypeName name="vlxd.bo.CategoryBO"/>
+<fullyQualifiedTypeName name="vlxd.dto.CategoryDTO"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="vlxd.dto.ProductDTO"/>
+<fullyQualifiedTypeName name="vlxd.bo.ProductBO"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,13 @@
+package vlxd.bo;
+
+import javax.servlet.ServletContext;
+
+public class ProductBO {
+	
+	protected ServletContext context;
+
+	public CustomerBO(ServletContext context) {
+		this.context = context;
+	}
+
+}

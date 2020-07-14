@@ -1,0 +1,5 @@
+package vlxd.controller;
+
+public class EditProductServlet {
+
+}

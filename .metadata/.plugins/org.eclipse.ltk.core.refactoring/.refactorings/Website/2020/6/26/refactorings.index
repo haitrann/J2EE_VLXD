@@ -1,0 +1,7 @@
+1593159609381	Rename package 'mapper'
+1593159622168	Rename package 'dto'
+1593159668373	Rename package 'dbconnection'
+1593159694585	Rename package 'controller'
+1593258914422	Rename type 'CreateNewUser'
+1593259011991	Rename type 'UpdateUserServlet'
+1593259026888	Rename type 'EDitUserServlet'

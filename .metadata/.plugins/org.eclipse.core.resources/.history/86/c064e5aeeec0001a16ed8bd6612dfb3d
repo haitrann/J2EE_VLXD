@@ -1,0 +1,44 @@
+package vlxd.bo;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.ServletContext;
+
+import vlxd.dto.UserDTO;
+import vlxd.mapper.UserMapper;
+
+public class ProductBO {
+	
+	protected ServletContext context;
+
+	public ProductBO(ServletContext context) {
+		this.context = context;
+	}
+	
+	public void createProduct(String name, String price, String unit, Integer category_id) {
+		UserMapper mapper = null;
+		try {
+			UserDTO user = new UserDTO();
+			user.setName(name);
+			user.setEmail(email);
+			user.setPhone(phone);
+			user.setUsername(username);
+			user.setPassword(password);
+			user.setRole(role);
+
+			mapper = new UserMapper();
+			mapper.createUser(user);
+
+		} catch (Exception ex) {
+			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
+
+}

@@ -1,0 +1,8 @@
+package vlxd.controller;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet(name = "GoPageGoodsReceiptServlet", urlPatterns = { "/GoPageGoodsReceiptServlet" })
+public class GoPageGoodsReceiptServlet {
+
+}
