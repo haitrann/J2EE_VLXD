@@ -1,0 +1,126 @@
+package vlxd.bo;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.ServletContext;
+
+import vlxd.dto.CategoryDTO;
+import vlxd.dto.ProductDTO;
+import vlxd.dto.VendorDTO;
+import vlxd.mapper.CategoryMapper;
+import vlxd.mapper.ProductMapper;
+import vlxd.mapper.VendorMapper;
+
+public class ProductBO {
+	
+	protected ServletContext context;
+
+	public ProductBO(ServletContext context) {
+		this.context = context;
+	}
+	
+	public void createProduct(String name, String price, String unit, Integer category_id) {
+		ProductMapper mapper = null;
+		try {
+			ProductDTO product = new ProductDTO();
+			product.setName(name);
+			product.setPrice(price);
+			product.setUnit(unit);
+			product.setCategory_id(category_id);
+
+			mapper = new ProductMapper();
+			mapper.createProduct(product);
+
+		} catch (Exception ex) {
+			Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
+	
+	public ArrayList<ProductDTO> listProduct() {
+		ArrayList<ProductDTO> products = null;
+		ProductMapper mapper = null;
+		try {
+			mapper = new ProductMapper();
+			products = mapper.listProduct();
+		} catch (Exception ex) {
+			Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return products;
+	}
+	
+	public ArrayList<ProductDTO> searchProduct(String searchParameter) {
+		ArrayList<ProductDTO> products = null;
+		ProductMapper mapper = null;
+		try {
+			mapper = new ProductMapper();
+			products = mapper.searchProduct(searchParameter);
+		} catch (Exception ex) {
+			Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return products;
+	}
+	
+	public void editProduct(String id, String name, String price, String unit, Integer category_id) {
+		ProductMapper mapper = null;
+		try {
+			ProductDTO product = new ProductDTO();
+			product.setId(Integer.valueOf(id));
+			product.setName(name);
+			product.setPrice(price);
+			product.setUnit(unit);
+			product.setCategory_id(category_id);
+			
+			mapper = new ProductMapper();
+			mapper.editProduct(product);
+
+		} catch (Exception ex) {
+			Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(ProductBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
+
+	public void deteleProduct(String id) {
+		ProductMapper mapper = null;
+		try {
+			CategoryDTO category = new CategoryDTO();
+			category.setId(Integer.valueOf(id));
+
+			mapper = new CategoryMapper();
+			mapper.deleteCategory(category);
+		} catch (Exception ex) {
+			Logger.getLogger(CategoryBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(CategoryBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
+
+}

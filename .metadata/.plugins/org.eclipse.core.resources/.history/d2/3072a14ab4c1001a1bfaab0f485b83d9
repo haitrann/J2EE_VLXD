@@ -1,0 +1,8 @@
+package vlxd.controller;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet(name = "ListProductServlet", urlPatterns = { "/ListProductServlet" })
+public class ListProductServlet {
+
+}

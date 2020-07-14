@@ -1,0 +1,37 @@
+package vlxd.dto;
+
+import java.sql.Timestamp;
+
+public class ProductDTO {
+	private Integer id;
+	private String name;
+	private String price;
+	private String unit;
+	private Integer category_id;
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getPrice() {
+		return name;
+	}
+	
+	public void setPrice(String name) {
+		this.name = name;
+	}
+	
+	
+}

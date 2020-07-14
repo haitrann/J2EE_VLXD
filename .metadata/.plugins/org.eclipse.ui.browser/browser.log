@@ -1,0 +1,3 @@
+
+Jun 26, 2020 16:12:48.94 NEW SESSION
+Jun 26, 2020 16:12:48.94 [10432:9580:0626/161248.944:ERROR:data_pack.cc(120)] Could not open pak file for writing: The requested operation cannot be performed on a file with a user-mapped section open. (0x4C8)
