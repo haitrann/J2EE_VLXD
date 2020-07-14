@@ -37,7 +37,6 @@ body {
 	margin-top: 80px;
 	margin-bottom: auto;
 }
-
 canvas {
 	background-color: #e9ecef;
 	display: block;
@@ -58,7 +57,7 @@ canvas {
 	<div class="login-box">
 
 		<div class="login-logo ">
-			<a href="#"><b class="text-primary font-weight-bold">THAI CONG INTERIOR</b></a>
+			<a href="./Home"><b class="text-primary font-weight-bold">THAI CONG INTERIOR</b></a>
 		</div>
 		<!-- /.login-logo -->
 

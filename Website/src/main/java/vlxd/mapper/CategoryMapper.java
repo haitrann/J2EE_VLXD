@@ -49,25 +49,21 @@ public class CategoryMapper extends DBMapper {
 		return categories;
 	}
 	
-	public ArrayList<CategoryDTO> searchCategoryById(Integer id) {
-		ArrayList<CategoryDTO> categories = new ArrayList<>();
+	public CategoryDTO searchCategoryById(Integer id) {
+		CategoryDTO category = new CategoryDTO();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM category WHERE id LIKE " + "'%" + id + "%'";
+			String sqlStr = "SELECT * FROM category WHERE id=" + id;
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
-				CategoryDTO category = new CategoryDTO();
 				category.setId(rs.getInt("id"));
 				category.setName(rs.getString("name"));
-				
-				categories.add(category);
 			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
-		return categories;
+		return category;
 	}
 	
 	public void editCategory(CategoryDTO category) {

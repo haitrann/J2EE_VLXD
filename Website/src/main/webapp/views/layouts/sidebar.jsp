@@ -122,6 +122,55 @@
                         </li>
                     </ul>
                 </li>
+                
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fa fa-line-chart"></i>
+                        <p>
+                            Product
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="./ListProductServlet" class="nav-link  effect-underline ">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>List Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./GoPageCreateNewProductServlet" class="nav-link  effect-underline">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Create Product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fa fa-line-chart"></i>
+                        <p>
+                            Transaction
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="./GoPageGoodsReceiptServlet" class="nav-link  effect-underline ">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Goods Receipt</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./GoPageCreateNewCustomerServlet" class="nav-link  effect-underline">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Goods Issue</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
 
                 
 

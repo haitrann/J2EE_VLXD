@@ -70,24 +70,8 @@
                                         <div class="col-md-6 col-6">
                                             <nav class="navbar navbar-light bg-light">
                                                 <form class="form-inline" action="./ListCustomerServlet">
-                                                    <input id="searchById" name="searchById"
-                                                        class="form-control mr-sm-2" type="search" placeholder="Search by ID"
-                                                        aria-label="Search">
-                                                    <button class="btn btn-outline-success my-2 my-sm-0"
-                                                        type="submit">Search</button>
-                                                </form>
-
-                                                <form class="form-inline" action="./ListCustomerServlet">
-                                                    <input id="searchByName" name="searchByName"
-                                                        class="form-control mr-sm-2" type="search" placeholder="Search by name"
-                                                        aria-label="Search">
-                                                    <button class="btn btn-outline-success my-2 my-sm-0"
-                                                        type="submit">Search</button>
-                                                </form>
-                                                
-                                                <form class="form-inline" action="./ListCustomerServlet">
-                                                    <input id="searchByPhone" name="searchByPhone"
-                                                        class="form-control mr-sm-2" type="search" placeholder="Search by phone"
+                                                    <input id="search" name="search"
+                                                        class="form-control mr-sm-2" type="search" placeholder="id or name or phone"
                                                         aria-label="Search">
                                                     <button class="btn btn-outline-success my-2 my-sm-0"
                                                         type="submit">Search</button>

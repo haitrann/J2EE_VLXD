@@ -11,33 +11,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vlxd.bo.UserBO;
-import vlxd.dto.UserDTO;
+import vlxd.bo.CategoryBO;
+import vlxd.dto.CategoryDTO;
 
-@WebServlet(name = "ListUserServlet", urlPatterns = { "/ListUserServlet" })
-public class ListUserServlet extends HttpServlet {
+@WebServlet(name = "GoPageCreateNewProductServlet", urlPatterns = { "/GoPageCreateNewProductServlet" })
+public class GoPageCreateNewProductServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		ServletContext context = request.getSession().getServletContext();
-		UserBO userBO = new UserBO(context);
-		ArrayList<UserDTO> users = new ArrayList<>();
-
-		if (request.getParameterMap().isEmpty()) {
-			users = userBO.listUser();
-		}
-
-		if (request.getParameterMap().containsKey("search")) {
-			String searchParameter = request.getParameter("search");
-			users = userBO.searchUser(searchParameter);
-		}
-
-		request.setAttribute("users", users);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/user/ListUser.jsp");
+		CategoryBO categoryBO = new CategoryBO(context);
+		ArrayList<CategoryDTO> category = new ArrayList<>();
+		category = categoryBO.listCategory();
+		
+		request.setAttribute("listCategory", category);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/AddProduct.jsp");
 		dispatcher.forward(request, response);
 	}
+
 }

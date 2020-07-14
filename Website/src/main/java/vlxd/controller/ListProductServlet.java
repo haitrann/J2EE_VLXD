@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vlxd.bo.VendorBO;
-import vlxd.dto.VendorDTO;
+import vlxd.bo.ProductBO;
+import vlxd.dto.ProductDTO;
 
-@WebServlet(name = "ListVendorServlet", urlPatterns = { "/ListVendorServlet" })
-public class ListVendorServlet extends HttpServlet {
+@WebServlet(name = "ListProductServlet", urlPatterns = { "/ListProductServlet" })
+public class ListProductServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,21 +24,20 @@ public class ListVendorServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		ServletContext context = request.getSession().getServletContext();
-		VendorBO vendorBO = new VendorBO(context);
-		ArrayList<VendorDTO> vendors = new ArrayList<>();
+		ProductBO productBO = new ProductBO(context);
+		ArrayList<ProductDTO> products = new ArrayList<>();
 
 		if (request.getParameterMap().isEmpty()) {
-			vendors = vendorBO.listVendor();
+			products = productBO.listProduct();
 		}
 
 		if (request.getParameterMap().containsKey("search")) {
 			String searchParameter = request.getParameter("search");
-			vendors = vendorBO.searchVendor(searchParameter);
+			products = productBO.searchProduct(searchParameter);
 		}
 
-		request.setAttribute("vendors", vendors);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/ListVendor.jsp");
+		request.setAttribute("products", products);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/ListProduct.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

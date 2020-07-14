@@ -57,15 +57,14 @@ public class VendorMapper extends DBMapper {
 
 		return vendors;
 	}
-
-	public ArrayList<VendorDTO> searchVendorById(Integer id) {
-		ArrayList<VendorDTO> vendors = new ArrayList<>();
+	
+	public VendorDTO searchVendorById(Integer id) {
+		VendorDTO vendor = new VendorDTO();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM vendor WHERE id LIKE " + "'%" + id + "%'";
+			String sqlStr = "SELECT * FROM vendor WHERE id=" + id;
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
-				VendorDTO vendor = new VendorDTO();
 				vendor.setId(rs.getInt("id"));
 				vendor.setName(rs.getString("name"));
 				vendor.setAddress(rs.getString("address"));
@@ -74,22 +73,23 @@ public class VendorMapper extends DBMapper {
 				vendor.setDebt(rs.getString("debt"));
 				vendor.setCreated_at(rs.getTimestamp("created_at"));
 				vendor.setUpdated_at(rs.getTimestamp("updated_at"));
-
-				vendors.add(vendor);
+				
 			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return vendors;
+		return vendor;
 	}
 
-	public ArrayList<VendorDTO> searchVendorByName(String name) {
+	public ArrayList<VendorDTO> searchVendor(String searchParameter) {
 		ArrayList<VendorDTO> vendors = new ArrayList<>();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM vendor WHERE name LIKE " + "'%" + name + "%'";
+			String sqlStr = "SELECT * FROM vendor "
+					+ "WHERE id=trim('" + searchParameter + "') "
+					+ "OR name LIKE '%" + searchParameter + "%' ";
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
 				VendorDTO vendor = new VendorDTO();

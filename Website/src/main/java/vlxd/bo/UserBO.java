@@ -101,13 +101,13 @@ public class UserBO {
 		}
 		return users;
 	}
-
-	public ArrayList<UserDTO> searchUserById(Integer id) {
-		ArrayList<UserDTO> users = null;
+	
+	public UserDTO searchUserById(Integer id) {
+		UserDTO user = null;
 		UserMapper mapper = null;
 		try {
 			mapper = new UserMapper();
-			users = mapper.searchUserById(id);
+			user = mapper.searchUserById(id);
 		} catch (Exception ex) {
 			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
@@ -117,15 +117,15 @@ public class UserBO {
 				Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
-		return users;
+		return user;
 	}
 
-	public ArrayList<UserDTO> searchUserByName(String name) {
+	public ArrayList<UserDTO> searchUser(String searchParameter) {
 		ArrayList<UserDTO> users = null;
 		UserMapper mapper = null;
 		try {
 			mapper = new UserMapper();
-			users = mapper.searchUserByName(name);
+			users = mapper.searchUser(searchParameter);
 		} catch (Exception ex) {
 			Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {

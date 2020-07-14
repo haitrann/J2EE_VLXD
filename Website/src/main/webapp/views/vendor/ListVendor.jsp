@@ -65,16 +65,16 @@
 										<div class="col-md-6 col-6">
 											<a href="./CreateNewVendorServlet">
 												<Button type="button" class="btn  btn-primary float-right">Add
-													New</Button>
+													New Vendor</Button>
 											</a>
 										</div>
 										
 										<div class="col-md-6 col-6">
 											<nav class="navbar navbar-light bg-light">
 												<form class="form-inline" action="./ListVendorServlet">
-													<input id="searchByName" name="searchByName"
+													<input id="searchy" name="search"
 														class="form-control mr-sm-2" type="search"
-														placeholder="Search by name" aria-label="Search">
+														placeholder="id or name" aria-label="Search">
 													<button class="btn btn-outline-success my-2 my-sm-0"
 														type="submit">Search</button>
 												</form>

@@ -58,67 +58,39 @@ public class CustomerMapper extends DBMapper {
 
 		return customers;
 	}
-
-	public ArrayList<CustomerDTO> searchCustomerById(Integer id) {
-		ArrayList<CustomerDTO> customers = new ArrayList<>();
-		try {
-			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM customer WHERE id LIKE " + "'%" + id + "%'";
-			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
-			while (rs != null && rs.next()) {
-				CustomerDTO customer = new CustomerDTO();
-				customer.setId(rs.getInt("id"));
-				customer.setName(rs.getString("name"));
-				customer.setAddress(rs.getString("address"));
-				customer.setPhone(rs.getString("phone"));
-				customer.setEmail(rs.getString("email"));
-				customer.setCreated_at(rs.getTimestamp("created_at"));
-				customer.setUpdated_at(rs.getTimestamp("updated_at"));
-
-				
-				customers.add(customer);
-			}
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		return customers;
-	}
-
-	public ArrayList<CustomerDTO> searchCustomerByName(String name) {
-		ArrayList<CustomerDTO> customers = new ArrayList<>();
-		try {
-			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM customer WHERE name LIKE " + "'%" + name + "%'";
-			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
-			while (rs != null && rs.next()) {
-				CustomerDTO customer = new CustomerDTO();
-				customer.setId(rs.getInt("id"));
-				customer.setName(rs.getString("name"));
-				customer.setAddress(rs.getString("address"));
-				customer.setPhone(rs.getString("phone"));
-				customer.setEmail(rs.getString("email"));
-				customer.setCreated_at(rs.getTimestamp("created_at"));
-				customer.setUpdated_at(rs.getTimestamp("updated_at"));
-
-				
-				customers.add(customer);
-			}
-
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		return customers;
-	}
 	
-	public ArrayList<CustomerDTO> searchCustomerByPhone(String phone) {
+	public CustomerDTO searchCustomerById(Integer id) {
+		CustomerDTO customer = new CustomerDTO();
+		try {
+			Statement stmt = getConnection().createStatement();
+			String sqlStr = "SELECT * FROM customer WHERE id=" + id;
+			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
+			while (rs != null && rs.next()) {
+				customer.setId(rs.getInt("id"));
+				customer.setName(rs.getString("name"));
+				customer.setAddress(rs.getString("address"));
+				customer.setPhone(rs.getString("phone"));
+				customer.setEmail(rs.getString("email"));
+				customer.setCreated_at(rs.getTimestamp("created_at"));
+				customer.setUpdated_at(rs.getTimestamp("updated_at"));
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return customer;
+	}
+
+	public ArrayList<CustomerDTO> searchCustomer(String searchParameter) {
 		ArrayList<CustomerDTO> customers = new ArrayList<>();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM customer WHERE phone LIKE " + "'%" + phone + "%'";
+			String sqlStr = "SELECT * FROM customer "
+					+ "WHERE id=trim('" + searchParameter + "') "
+					+ "OR name LIKE '%" + searchParameter + "%' "
+					+ "OR phone LIKE '%" + searchParameter + "%' ";
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
 				CustomerDTO customer = new CustomerDTO();
@@ -133,7 +105,6 @@ public class CustomerMapper extends DBMapper {
 				
 				customers.add(customer);
 			}
-
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
