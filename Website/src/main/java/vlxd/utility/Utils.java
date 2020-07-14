@@ -75,5 +75,10 @@ public class Utils {
 		}
     	return null;
     }
+    
+    public static String formatVND(String amount) {
+    	String replaceAmount = amount.replace(".", "");
+    	return replaceAmount;
+    }
 
 }

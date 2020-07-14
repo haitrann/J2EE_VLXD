@@ -16,7 +16,7 @@ public class UserMapper extends DBMapper {
 	public UserDTO loginUser(UserDTO user) {
 		UserDTO userLogined = new UserDTO();
 		try {
-			String sqlStr = "SELECT * FROM user WHERE username=? AND password=? AND status=1 LIMIT 1";
+			String sqlStr = "SELECT * FROM user WHERE username=? AND password=? AND status=1";
 
 			PreparedStatement preparedStmt = getConnection().prepareStatement(sqlStr);
 			preparedStmt.setString(1, user.getUsername());
@@ -111,15 +111,15 @@ public class UserMapper extends DBMapper {
 
 		return users;
 	}
-
-	public ArrayList<UserDTO> searchUserById(Integer id) {
-		ArrayList<UserDTO> users = new ArrayList<>();
+	
+	public UserDTO searchUserById(Integer id) {
+		UserDTO user = new UserDTO();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM user WHERE id LIKE " + "'%" + id + "%' AND status=1";
+			String sqlStr = "SELECT * FROM user "
+					+ "WHERE id=" + id + " AND status=1";
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
-				UserDTO user = new UserDTO();
 				user.setId(rs.getInt("id"));
 				user.setName(rs.getString("name"));
 				user.setEmail(rs.getString("email"));
@@ -128,22 +128,23 @@ public class UserMapper extends DBMapper {
 				user.setRole(rs.getString("role"));
 				user.setCreated_at(rs.getTimestamp("created_at"));
 				user.setUpdated_at(rs.getTimestamp("updated_at"));
-
-				users.add(user);
 			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return users;
+		return user;
 	}
 
-	public ArrayList<UserDTO> searchUserByName(String name) {
+	public ArrayList<UserDTO> searchUser(String searchParameter) {
 		ArrayList<UserDTO> users = new ArrayList<>();
 		try {
 			Statement stmt = getConnection().createStatement();
-			String sqlStr = "SELECT * FROM user WHERE name LIKE " + "'%" + name + "%' AND status=1";
+			String sqlStr = "SELECT * FROM user "
+					+ "WHERE id=trim('" + searchParameter + "') "
+					+ "OR name LIKE '%" + searchParameter + "%' "
+					+ "AND status=1";
 			ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
 			while (rs != null && rs.next()) {
 				UserDTO user = new UserDTO();
@@ -177,9 +178,9 @@ public class UserMapper extends DBMapper {
 			preparedStmt.setString(2, user.getEmail());
 			preparedStmt.setString(3, user.getPhone());
 			preparedStmt.setString(4, user.getRole());
-			preparedStmt.setString(6, user.getUsername());
-			preparedStmt.setTimestamp(7, user.getUpdated_at());
-			preparedStmt.setInt(8, user.getId());
+			preparedStmt.setString(5, user.getUsername());
+			preparedStmt.setTimestamp(6, user.getUpdated_at());
+			preparedStmt.setInt(7, user.getId());
 
 			preparedStmt.executeUpdate();
 

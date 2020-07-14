@@ -31,19 +31,9 @@ public class ListCustomerServlet extends HttpServlet {
 			customers = customerBO.listCustomer();
 		}
 
-		if (request.getParameterMap().containsKey("searchById")) {
-			String id = request.getParameter("searchById");
-			customers = customerBO.searchCustomerById(Integer.valueOf(id));
-		}
-
-		if (request.getParameterMap().containsKey("searchByName")) {
-			String name = request.getParameter("searchByName");
-			customers = customerBO.searchCustomerByName(name);
-		}
-		
-		if (request.getParameterMap().containsKey("searchByPhone")) {
-			String phone = request.getParameter("searchByPhone");
-			customers = customerBO.searchCustomerByPhone(phone);
+		if (request.getParameterMap().containsKey("search")) {
+			String searchParameter = request.getParameter("search");
+			customers = customerBO.searchCustomer(searchParameter);
 		}
 
 		request.setAttribute("customers", customers);

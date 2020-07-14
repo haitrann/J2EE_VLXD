@@ -57,49 +57,31 @@ public class CustomerBO {
 		}
 		return customers;
 	}
-
-	public ArrayList<CustomerDTO> searchCustomerById(Integer id) {
-		ArrayList<CustomerDTO> customers = null;
-		CustomerMapper mapper = null;
-		try {
-			mapper = new CustomerMapper();
-			customers = mapper.searchCustomerById(id);
-		} catch (Exception ex) {
-			Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
-		} finally {
-			try {
-				mapper.closeConnection();
-			} catch (Exception ex) {
-				Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
-		return customers;
-	}
-
-	public ArrayList<CustomerDTO> searchCustomerByName(String name) {
-		ArrayList<CustomerDTO> customers = null;
-		CustomerMapper mapper = null;
-		try {
-			mapper = new CustomerMapper();
-			customers = mapper.searchCustomerByName(name);
-		} catch (Exception ex) {
-			Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
-		} finally {
-			try {
-				mapper.closeConnection();
-			} catch (Exception ex) {
-				Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
-		return customers;
-	}
 	
-	public ArrayList<CustomerDTO> searchCustomerByPhone(String phone) {
+	public CustomerDTO searchCustomerById(Integer id) {
+		CustomerDTO customer = null;
+		CustomerMapper mapper = null;
+		try {
+			mapper = new CustomerMapper();
+			customer = mapper.searchCustomerById(id);
+		} catch (Exception ex) {
+			Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return customer;
+	}
+
+	public ArrayList<CustomerDTO> searchCustomer(String searchParameter) {
 		ArrayList<CustomerDTO> customers = null;
 		CustomerMapper mapper = null;
 		try {
 			mapper = new CustomerMapper();
-			customers = mapper.searchCustomerByPhone(phone);
+			customers = mapper.searchCustomer(searchParameter);
 		} catch (Exception ex) {
 			Logger.getLogger(CustomerBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {

@@ -22,12 +22,12 @@ public class GoPageEditCustomerServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer currentCustomerId = Integer.valueOf(request.getParameter("id"));
+		String currentCustomer = request.getParameter("id");
 
 		ServletContext context = request.getSession().getServletContext();
 		CustomerBO customerBO = new CustomerBO(context);
 		CustomerDTO customer = new CustomerDTO();
-		customer = customerBO.searchCustomerById(currentCustomerId).get(0);
+		customer = customerBO.searchCustomerById(Integer.valueOf(currentCustomer));
 
 		request.setAttribute("infoEditCustomer", customer);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/customer/EditCustomer.jsp");

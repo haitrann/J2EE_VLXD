@@ -1,6 +1,7 @@
 package vlxd.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vlxd.bo.CategoryBO;
+import vlxd.bo.ProductBO;
 import vlxd.dto.CategoryDTO;
+import vlxd.dto.ProductDTO;
 
-@WebServlet(name = "GoPageEditCategoryServlet", urlPatterns = { "/GoPageEditCategoryServlet" })
-public class GoPageEditCategoryServlet extends HttpServlet {
+@WebServlet(name = "GoPageEditProductServlet", urlPatterns = { "/GoPageEditProductServlet" })
+public class GoPageEditProductServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,15 +25,20 @@ public class GoPageEditCategoryServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer currentCategoryId = Integer.valueOf(request.getParameter("id"));
+		String currentProduct = request.getParameter("id");
 
 		ServletContext context = request.getSession().getServletContext();
+		ProductBO productBO = new ProductBO(context);
+		ProductDTO product = new ProductDTO();
+		product = productBO.searchProductById(Integer.valueOf(currentProduct));
+		
 		CategoryBO categoryBO = new CategoryBO(context);
-		CategoryDTO category = new CategoryDTO();
-		category = categoryBO.searchCategoryById(currentCategoryId);
+		ArrayList<CategoryDTO> category = new ArrayList<>();
+		category = categoryBO.listCategory();
 
-		request.setAttribute("infoEditCategory", category);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/category/EditCategory.jsp");
+		request.setAttribute("infoEditProduct", product);
+		request.setAttribute("listCategory", category);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/EditProduct.jsp");
 		dispatcher.forward(request, response);
 
 	}

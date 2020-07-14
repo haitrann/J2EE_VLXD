@@ -58,12 +58,12 @@ public class VendorBO {
 		return vendors;
 	}
 	
-	public ArrayList<VendorDTO> searchVendorById(Integer id) {
-		ArrayList<VendorDTO> vendors = null;
+	public VendorDTO searchVendorById(Integer id) {
+		VendorDTO vendor = null;
 		VendorMapper mapper = null;
 		try {
 			mapper = new VendorMapper();
-			vendors = mapper.searchVendorById(id);
+			vendor = mapper.searchVendorById(id);
 		} catch (Exception ex) {
 			Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
@@ -73,15 +73,15 @@ public class VendorBO {
 				Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
-		return vendors;
+		return vendor;
 	}
 	
-	public ArrayList<VendorDTO> searchVendorByName(String name) {
+	public ArrayList<VendorDTO> searchVendor(String searchParameter) {
 		ArrayList<VendorDTO> vendors = null;
 		VendorMapper mapper = null;
 		try {
 			mapper = new VendorMapper();
-			vendors = mapper.searchVendorByName(name);
+			vendors = mapper.searchVendor(searchParameter);
 		} catch (Exception ex) {
 			Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {

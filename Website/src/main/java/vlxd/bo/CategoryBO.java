@@ -54,12 +54,12 @@ public class CategoryBO {
 		return categories;
 	}
 	
-	public ArrayList<CategoryDTO> searchCategoryById(Integer id) {
-		ArrayList<CategoryDTO> categories = null;
+	public CategoryDTO searchCategoryById(Integer id) {
+		CategoryDTO category = null;
 		CategoryMapper mapper = null;
 		try {
 			mapper = new CategoryMapper();
-			categories = mapper.searchCategoryById(id);
+			category = mapper.searchCategoryById(id);
 		} catch (Exception ex) {
 			Logger.getLogger(CategoryBO.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
@@ -69,7 +69,7 @@ public class CategoryBO {
 				Logger.getLogger(CategoryBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
-		return categories;
+		return category;
 	}
 	
 	public void editCategory(String id, String name) {

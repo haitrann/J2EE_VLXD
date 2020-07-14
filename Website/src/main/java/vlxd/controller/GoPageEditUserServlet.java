@@ -22,12 +22,12 @@ public class GoPageEditUserServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer currentUserId = Integer.valueOf(request.getParameter("id"));
+		String currentUser = request.getParameter("id");
 
 		ServletContext context = request.getSession().getServletContext();
 		UserBO userBO = new UserBO(context);
 		UserDTO user = new UserDTO();
-		user = userBO.searchUserById(currentUserId).get(0);
+		user = userBO.searchUserById(Integer.valueOf(currentUser));
 
 		request.setAttribute("infoEditUser", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/user/EditUser.jsp");

@@ -22,12 +22,12 @@ public class GoPageEditVendorServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer currentVendorId = Integer.valueOf(request.getParameter("id"));
+		String currentVendor = request.getParameter("id");
 
 		ServletContext context = request.getSession().getServletContext();
 		VendorBO vendorBO = new VendorBO(context);
 		VendorDTO vendor = new VendorDTO();
-		vendor = vendorBO.searchVendorById(currentVendorId).get(0);
+		vendor = vendorBO.searchVendorById(Integer.valueOf(currentVendor));
 
 		request.setAttribute("infoEditVendor", vendor);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/EditVendor.jsp");
