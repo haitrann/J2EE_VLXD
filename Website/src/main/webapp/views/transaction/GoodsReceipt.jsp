@@ -107,7 +107,7 @@
 											<div class="col-md-2"></div>
 											<div class="col-md-5 col-5">
 												<h4>
-													Amount payable: <span class="badge badge-danger ml-1">1.000.000</span>
+													Amount payable: <span class="badge badge-danger ml-1">10.000.000</span>
 												</h4>
 											</div>
 										</div>
