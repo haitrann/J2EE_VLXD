@@ -52,7 +52,7 @@
 								</div>
 
 								<div class="card-body">
-									<form class="form" action="./CreateNewUserServlet" method="POST">
+									<form id="goods-create" class="form" action="./CreateNewUserServlet" method="POST">
 
 
 										<div class="row">
@@ -75,7 +75,7 @@
 
 										<div class="row">
 											<div class="col-md-5">
-												<input id="id" name="id" type="hidden" value="1">
+												<input id="vendor-id" name="vendor-id" type="hidden" value="1">
 												<button type="button" class="btn btn-success">
 													Vendor <span class="badge badge-light">Sun house</span>
 												</button>
@@ -182,18 +182,33 @@
 					updateDebt($(this).val().replace(/\./g, ''))
 				}
 			});
+			
+			$('form#goods-create').on('submit', function() {
+				if (data.some(t => t.product === -1)) {
+					alert('Vui long chon san pham');
+					return false;
+				}
+				create()
+			});
 
 			const newTr = `
 				<tr>
-				  <td class="pt-3-half" onblur="updateProduct(this)" contenteditable="true"></td>
-				  <td class="pt-3-half" onblur="updateQuantity(this)" contenteditable="true"></td>
-				  <td class="pt-3-half currency" onblur="updateAmount(this)" contenteditable="true"></td>
-				  <td class="pt-3-half total"></td>
-				  <td>
-				    <span class="table-remove">
-						<button type="button" class="btn btn-primary btn-outline-danger">Remove</button>
-					</span>
-				  </td>
+					<td class="pt-3-half">
+						<select class="form-control" onchange="updateProduct(this)">
+							<option value="">--- Chọn sản phẩm ---</option>
+							<c:forEach items="${listProduct}" var="product">
+								<option value="${product.getId()}">${product.getName()}</option>
+							</c:forEach>
+						</select>
+					</td>
+					<td class="pt-3-half currency" onblur="updateQuantity(this)" contenteditable="true"></td>
+					<td class="pt-3-half currency" onblur="updateAmount(this)" contenteditable="true"></td>
+					<td class="pt-3-half total"></td>
+					<td>
+						<span class="table-remove">
+							<button type="button" class="btn btn-primary btn-outline-danger">Remove</button>
+						</span>
+					</td>
 				</tr>`;
 
 			$('.table-add').on('click', 'i', () => {
@@ -283,7 +298,7 @@
 		
 		function addRowInTable() {
 			data.push({
-				product: '',
+				product: -1,
 				quantity: 0,
 				amount: 0,
 				total: 0
@@ -294,18 +309,17 @@
 			data.splice(i, 1);
 		}
 		
-		function updateItem(e, field, type = 'String', cb) {
-			const i = $(e).parent().index();
-			data[i][field] = type === 'String' ? $(e).text() : window[type]($(e).text().replace(/\./g, ''));
+		function updateItemAt(i, field, value, cb) {
+			data[i][field] = value; //type === 'String' ? $(e).text() : window[type]($(e).text().replace(/\./g, ''));
 			if (cb) cb(data[i]);
 		}
 		
 		function updateProduct(t) {
-			updateItem(t, 'product')
+			updateItemAt($(t).closest('tr').index(), 'product', Number($(t).find('option:selected').val()));
 		}
 		
 		function updateQuantity(t) {
-			updateItem(t, 'quantity', 'Number', (updatedItem) => {
+			updateItemAt($(t).parent('tr').index(), 'quantity', Number($(t).text().replace(/\./g, '')), (updatedItem) => {
 				updatedItem.total = updatedItem.amount * updatedItem.quantity;
 				$(t).siblings('.total').text(updatedItem.total.toLocaleString('vi'));
 				updatePaymentTotal();
@@ -313,7 +327,7 @@
 		}
 		
 		function updateAmount(t) {
-			updateItem(t, 'amount', 'Number', (updatedItem) => {
+			updateItemAt($(t).parent('tr').index(), 'amount', Number($(t).text().replace(/\./g, '')), (updatedItem) => {
 				updatedItem.total = updatedItem.amount * updatedItem.quantity;
 				$(t).siblings('.total').text(updatedItem.total.toLocaleString('vi'));
 				updatePaymentTotal();
@@ -331,6 +345,21 @@
 			$('#debt').val(debt.toLocaleString('vi'));
 		}
 
+		function create() {
+			alert('Hello')
+			var vendor = $('#vendor-id').val();
+			/*
+			fetch('/PostGoods', {
+				method: 'POST',
+				body: {
+					products: data,
+					vendor
+				}
+			})
+			.then(res => res.json())
+			.then(res => console.log(res))
+			*/
+		}
 		
 	</script>
 

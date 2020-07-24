@@ -8,8 +8,8 @@ public class CustomerDTO {
 	private String address;
 	private String phone;
 	private String email;
-	private Timestamp created_at;
-	private Timestamp updated_at;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 	
 	public Integer getId() {
 		return id;
@@ -52,19 +52,19 @@ public class CustomerDTO {
 	}
 	
 	public Timestamp getCreated_at() {
-		return created_at;
+		return createdAt;
 	}
 	
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
+	public void setCreated_at(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 	
 	public Timestamp getUpdated_at() {
-		return updated_at;
+		return updatedAt;
 	}
 	
-	public void setUpdated_at(Timestamp updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated_at(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }
 

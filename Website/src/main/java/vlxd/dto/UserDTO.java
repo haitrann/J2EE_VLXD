@@ -11,8 +11,8 @@ public class UserDTO {
 	private String password;
 	private String role;
 	private String avatar;
-	private Timestamp created_at;
-	private Timestamp updated_at;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 	private Integer status;
 	
 	public Integer getId() {
@@ -80,19 +80,19 @@ public class UserDTO {
 	}
 	
 	public Timestamp getCreated_at() {
-		return created_at;
+		return createdAt;
 	}
 	
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
+	public void setCreated_at(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 	
 	public Timestamp getUpdated_at() {
-		return updated_at;
+		return updatedAt;
 	}
 	
-	public void setUpdated_at(Timestamp updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated_at(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 	
 	public Integer getStatus() {
