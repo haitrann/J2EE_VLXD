@@ -1,10 +1,12 @@
 package vlxd.bo;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
 
+import vlxd.dto.ProductDTO;
 import vlxd.dto.WarehouseDTO;
 import vlxd.mapper.WarehouseMapper;
 
@@ -20,8 +22,9 @@ public class WarehouseBO {
 		WarehouseMapper mapper = null;
 		try {
 			WarehouseDTO warehouse = new WarehouseDTO();
-			
-			warehouse.setProductId(productId);
+			ProductDTO product = new ProductDTO();
+			product.setId(productId);
+			warehouse.setProduct(product);
 			warehouse.setQuantityInStock(quantityInStock);
 			
 
@@ -37,6 +40,26 @@ public class WarehouseBO {
 				Logger.getLogger(WarehouseBO.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
+	}
+	
+	public ArrayList<WarehouseDTO> listProductInWarehouse() {
+		ArrayList<WarehouseDTO> listWarehouse = null;
+		WarehouseMapper mapper = null;
+		try {		
+			mapper = new WarehouseMapper();
+			listWarehouse = mapper.listProductInWarehouse();
+
+		} catch (Exception ex) {
+			Logger.getLogger(WarehouseBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(WarehouseBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		
+		return listWarehouse;
 	}
 	
 	public WarehouseDTO seachWarehouseByProductId(Integer productId) {

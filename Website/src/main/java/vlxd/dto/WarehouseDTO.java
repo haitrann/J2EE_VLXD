@@ -2,7 +2,7 @@ package vlxd.dto;
 
 public class WarehouseDTO {
 	private Integer id;
-	private Integer productId;
+	private ProductDTO product;
 	private Integer quantityInStock;
 	
 	public Integer getId() {
@@ -13,12 +13,12 @@ public class WarehouseDTO {
 		this.id = id;
 	}
 	
-	public Integer getProductId() {
-		return productId;
+	public ProductDTO getProduct() {
+		return product;
 	}
 	
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setProduct(ProductDTO product) {
+		this.product = product;
 	}
 	
 	public Integer getQuantityInStock() {

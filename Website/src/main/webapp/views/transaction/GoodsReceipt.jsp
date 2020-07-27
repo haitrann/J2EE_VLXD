@@ -87,7 +87,7 @@
 											<div class="card-body">
 												<div id="table-editable" class="table-editable">
 													<span class="table-add float-right mb-3 mr-2">
-														<i class="fas fa-plus fa-2x" aria-hidden="true"></i>
+														<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
 													</span>
 													<table class="table table-bordered table-responsive-md table-striped text-center">
 														<thead>

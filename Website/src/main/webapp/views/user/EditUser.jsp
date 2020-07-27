@@ -46,8 +46,8 @@
 
                                 <div class="card-body">
                                     <form class="form" action="./EditUserServlet" method="POST">
-                                        <% UserDTO user = (UserDTO)request.getAttribute("infoEditUser"); 
-                                      
+                                        <% 
+                                        	UserDTO user = (UserDTO)request.getAttribute("infoEditUser"); 
                                         %>
                                         <div class="row">
                                             <div class="col col-lg-2">
