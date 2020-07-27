@@ -62,13 +62,13 @@
                                 <div class="card-body">
                                     <!-- <form role="form"> -->
                                     <div class="row">
-                                        <div class="col-md-6 col-6">
+                                        <div class="col-md-6 col-6" style="display: inline-flex; align-items: center">
                                             <a href="./GoPageCreateNewUserServlet">
                                                 <Button type="button" class="btn  btn-primary float-right">Add New User</Button>
                                             </a>
                                         </div>
                                         <div class="col-md-6 col-6">
-                                            <nav class="navbar navbar-light bg-light">
+                                            <nav class="navbar navbar-light">
                                                 <form class="form-inline" action="./ListUserServlet">
                                                     <input id="search" name="search"
                                                         class="form-control mr-sm-2" type="search" placeholder="id or name"

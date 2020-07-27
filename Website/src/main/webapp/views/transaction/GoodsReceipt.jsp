@@ -122,7 +122,7 @@
 										<div class="row justify-content-end">
 											<div class="col-md-5 d-flex flex-row">
 												<h4 style="width: 251px;">Amount paid:</h4>
-												<input class="form-control" id="paid" name="paid" type="text">
+												<input id="paid" name="paid" type="text">
 											</div>
 										</div>
 
@@ -131,7 +131,7 @@
 										<div class="row justify-content-end">
 											<div class="col-md-5 d-flex flex-row">
 												<h4 style="width: 251px;">Debt:</h4>
-												<input class="form-control" id="debt" name="debt" type="text" disabled>
+												<input id="debt" name="debt" type="text" disabled>
 											</div>
 										</div>
 

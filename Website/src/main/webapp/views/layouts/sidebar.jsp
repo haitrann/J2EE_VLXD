@@ -132,7 +132,7 @@
 					<a href="./ListProductInWarehouse" class="nav-link effect-underline">
 						<i class="nav-icon fa fa-home"></i>
 						<p>
-							Warehouse
+							Inventory Report
 						</p>
 					</a>
 				</li>
@@ -144,8 +144,8 @@
 				<c:set var="loginedInfo" scope="session" value="<%=loginedUser%>" />
 				<c:choose>
 					<c:when test="${loginedInfo.getRole() == 'manager'}">
-						<li class="nav-item has-treeview menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item has-treeview">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fa fa-user"></i>
 								<p>
 									User
@@ -175,7 +175,7 @@
 							<a href="#" class="nav-link ">
 								<i class="nav-icon fa fa-line-chart"></i>
 								<p>
-									Transaction
+									Goods Receipt
 									<i class="right fa fa-angle-left"></i>
 								</p>
 							</a>
@@ -183,13 +183,13 @@
 								<li class="nav-item">
 									<a href="./GoPageGoodsReceiptServlet" class="nav-link  effect-underline ">
 										<i class="fa fa-circle-o nav-icon"></i>
-										<p>Goods Receipt</p>
+										<p>Goods Received Note</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="./GoPageCreateNewCustomerServlet" class="nav-link  effect-underline">
+									<a href="./ListGoodsReceiptServlet" class="nav-link  effect-underline">
 										<i class="fa fa-circle-o nav-icon"></i>
-										<p>Goods Issue</p>
+										<p>Stock Take</p>
 									</a>
 								</li>
 							</ul>

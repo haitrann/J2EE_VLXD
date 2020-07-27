@@ -1,5 +1,6 @@
 package vlxd.bo;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,4 +51,25 @@ public class GoodsReceiptBO {
 		
 		return setInsertedId;
 	}
+	
+	public ArrayList<GoodsReceiptDTO> showAllGoodsReceipt() {
+		ArrayList<GoodsReceiptDTO> allGoodsReceipt = null;
+		GoodsReceiptMapper mapper = null;
+		try {
+			mapper = new GoodsReceiptMapper();
+			allGoodsReceipt = mapper.showAllGoodsReceipt();
+
+		} catch (Exception ex) {
+			Logger.getLogger(GoodsReceiptBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(GoodsReceiptBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		
+		return allGoodsReceipt;
+	}
+	
 }

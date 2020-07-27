@@ -62,7 +62,7 @@
 								<div class="card-body">
 									<!-- <form role="form"> -->
 									<div class="row">
-										<div class="col-md-6 col-6">
+										<div class="col-md-6 col-6" style="display: inline-flex; align-items: center">
 											<a href="./CreateNewVendorServlet">
 												<Button type="button" class="btn  btn-primary float-right">Add
 													New Vendor</Button>
