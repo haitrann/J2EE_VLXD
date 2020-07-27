@@ -21,12 +21,12 @@ public class GoodsReceiptDetailsMapper extends DBMapper {
 			preparedStmt.setString(3, newGoodsReceiptDetails.getQuantity());
 			preparedStmt.setInt(4, newGoodsReceiptDetails.getGoodsReceipt().getId());
 			preparedStmt.setInt(5, newGoodsReceiptDetails.getProduct().getId());
-			
+
 			preparedStmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
