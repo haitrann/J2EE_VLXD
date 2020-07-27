@@ -14,8 +14,10 @@ import org.json.JSONArray;
 import vlxd.bo.GoodsReceiptBO;
 import vlxd.bo.GoodsReceiptDetailsBO;
 import vlxd.bo.VendorBO;
+import vlxd.bo.WarehouseBO;
 import vlxd.dto.GoodsReceiptDTO;
 import vlxd.dto.UserDTO;
+import vlxd.dto.WarehouseDTO;
 import vlxd.utility.Utils;
 
 @WebServlet(name = "CreateGoodsReceivedNote", urlPatterns = { "/CreateGoodsReceivedNote" })
@@ -38,8 +40,8 @@ public class CreateGoodsReceivedNote extends HttpServlet {
 		ServletContext context = request.getSession().getServletContext();
 		GoodsReceiptBO goodsReceiptBO = new GoodsReceiptBO(context);
 		GoodsReceiptDetailsBO goodsReceiptDetailsBO = new GoodsReceiptDetailsBO(context);
-		VendorBO vendor = new VendorBO(context);
-		GoodsReceiptDTO goodsReceipt = goodsReceiptBO.createGoodsReceipt(paymentTotal, paid, Integer.valueOf(vendorId), userId);
+		VendorBO vendorBO = new VendorBO(context);
+		WarehouseBO warehouseBO = new WarehouseBO(context);
 		
 		JSONArray jsonArray = new JSONArray(jsonArrayProducts);
 		
@@ -48,15 +50,24 @@ public class CreateGoodsReceivedNote extends HttpServlet {
 			String unitPrice = String.valueOf(jsonArray.getJSONObject(i).getInt("amount"));
 			String quantity = String.valueOf(jsonArray.getJSONObject(i).getInt("quantity"));
 			Integer productId = jsonArray.getJSONObject(i).getInt("product");
-			goodsReceiptDetailsBO.createGoodsReceiptDetails(total, unitPrice, quantity, goodsReceipt, productId);
+			
+			if (Integer.valueOf(quantity) > 0 && Integer.valueOf(unitPrice) > 0 && productId != null) {
+				WarehouseDTO checkProductExits = warehouseBO.seachWarehouseByProductId(productId);
+				if (checkProductExits.getId() != null) {
+					Integer newQuantityInStock = checkProductExits.getQuantityInStock() + Integer.valueOf(quantity);
+					warehouseBO.updateQuantityInStock(checkProductExits.getId(), newQuantityInStock);
+				} else {
+					warehouseBO.createNewProductInWarehouse(productId, Integer.valueOf(quantity));
+				}
+				GoodsReceiptDTO goodsReceipt = goodsReceiptBO.createGoodsReceipt(paymentTotal, paid, Integer.valueOf(vendorId), userId);
+				goodsReceiptDetailsBO.createGoodsReceiptDetails(total, unitPrice, quantity, goodsReceipt, productId);
+				String currentDebtOfVendor =  (vendorBO.searchVendorById(Integer.valueOf(vendorId))).getDebt();
+				String newDebt = String.valueOf(Integer.valueOf(currentDebtOfVendor) + Integer.valueOf(debt));
+				vendorBO.updateDebtOfVendor(vendorId, newDebt);
+			} else {
+				response.setContentType("text/plain");
+				response.getWriter().write("fail");
+			}
 		}
-		
-		String currentDebtOfVendor =  (vendor.searchVendorById(Integer.valueOf(vendorId))).getDebt();
-		
-		String newDebt = String.valueOf(Integer.valueOf(currentDebtOfVendor) + Integer.valueOf(debt));
-		
-		vendor.updateDebtOfVendor(vendorId, newDebt);
-		
-		response.sendRedirect("./ListCategoryServlet");
 	}
 }

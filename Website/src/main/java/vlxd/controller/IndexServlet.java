@@ -17,6 +17,7 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/layouts/app.jsp");
 		dispatcher.forward(request, response);
 	}

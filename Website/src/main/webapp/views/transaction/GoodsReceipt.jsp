@@ -363,9 +363,13 @@
 						paid,
 						paymentTotal,
 						debt
+					},
+					success: function (responseText) {
+						if (responseText == "fail") {
+							alert("Check your input information !");
+						}
 					}
 				})
-			console.log(data);
 		}
 		
 	</script>
