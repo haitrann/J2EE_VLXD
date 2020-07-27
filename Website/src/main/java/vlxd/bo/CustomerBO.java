@@ -103,8 +103,8 @@ public class CustomerBO {
 			customer.setAddress(address);
 			customer.setPhone(phone);
 			customer.setEmail(email);
-			Timestamp update_at = new Timestamp(System.currentTimeMillis());
-			customer.setUpdated_at(update_at);
+			Timestamp updateAt = new Timestamp(System.currentTimeMillis());
+			customer.setUpdatedAt(updateAt);
 			
 			mapper = new CustomerMapper();
 			mapper.editCustomer(customer);

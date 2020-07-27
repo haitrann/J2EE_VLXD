@@ -20,7 +20,7 @@ public class GoodsReceiptDetailsDTO {
 		return total;
 	}
 	
-	public void setName(String total) {
+	public void setTotal(String total) {
 		this.total = total;
 	}
 	

@@ -45,8 +45,8 @@ public class CustomerMapper extends DBMapper {
 				customer.setAddress(rs.getString("address"));
 				customer.setPhone(rs.getString("phone"));
 				customer.setEmail(rs.getString("email"));
-				customer.setCreated_at(rs.getTimestamp("created_at"));
-				customer.setUpdated_at(rs.getTimestamp("updated_at"));
+				customer.setCreatedAt(rs.getTimestamp("created_at"));
+				customer.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 				
 				customers.add(customer);
@@ -71,8 +71,8 @@ public class CustomerMapper extends DBMapper {
 				customer.setAddress(rs.getString("address"));
 				customer.setPhone(rs.getString("phone"));
 				customer.setEmail(rs.getString("email"));
-				customer.setCreated_at(rs.getTimestamp("created_at"));
-				customer.setUpdated_at(rs.getTimestamp("updated_at"));
+				customer.setCreatedAt(rs.getTimestamp("created_at"));
+				customer.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 			}
 
@@ -99,8 +99,8 @@ public class CustomerMapper extends DBMapper {
 				customer.setAddress(rs.getString("address"));
 				customer.setPhone(rs.getString("phone"));
 				customer.setEmail(rs.getString("email"));
-				customer.setCreated_at(rs.getTimestamp("created_at"));
-				customer.setUpdated_at(rs.getTimestamp("updated_at"));
+				customer.setCreatedAt(rs.getTimestamp("created_at"));
+				customer.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 				
 				customers.add(customer);
@@ -124,7 +124,7 @@ public class CustomerMapper extends DBMapper {
 			preparedStmt.setString(2, customer.getAddress());
 			preparedStmt.setString(3, customer.getPhone());
 			preparedStmt.setString(4, customer.getEmail());
-			preparedStmt.setTimestamp(5, customer.getUpdated_at());
+			preparedStmt.setTimestamp(5, customer.getUpdatedAt());
 			preparedStmt.setInt(6, customer.getId());
 
 			preparedStmt.executeUpdate();

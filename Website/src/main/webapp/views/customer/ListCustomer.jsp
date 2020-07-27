@@ -105,8 +105,8 @@
 														<td>${customer.getAddress()}</td>
 														<td>${customer.getPhone()}</td>
 														<td>${customer.getEmail()}</td>
-														<td>${customer.getCreated_at()}</td>
-														<td>${customer.getUpdated_at()}</td>
+														<td>${customer.getCreatedAt()}</td>
+														<td>${customer.getUpdatedAt()}</td>
 														<td>
 															<a href="./GoPageEditCustomerServlet?id=${customer.getId()}"
 															type="button" class="btn btn-outline-info">Edit</a>

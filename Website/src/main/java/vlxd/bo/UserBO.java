@@ -148,8 +148,8 @@ public class UserBO {
 			user.setPhone(phone);
 			user.setRole(role);
 			user.setUsername(username);
-			Timestamp update_at = new Timestamp(System.currentTimeMillis());
-			user.setUpdated_at(update_at);
+			Timestamp updateAt = new Timestamp(System.currentTimeMillis());
+			user.setUpdatedAt(updateAt);
 			mapper = new UserMapper();
 			mapper.editUser(user);
 
@@ -169,8 +169,8 @@ public class UserBO {
 		try {
 			UserDTO user = new UserDTO();
 			user.setId(Integer.valueOf(id));
-			Timestamp update_at = new Timestamp(System.currentTimeMillis());
-			user.setUpdated_at(update_at);
+			Timestamp updateAt = new Timestamp(System.currentTimeMillis());
+			user.setUpdatedAt(updateAt);
 			mapper = new UserMapper();
 			mapper.deleteUser(user);
 		} catch (Exception ex) {

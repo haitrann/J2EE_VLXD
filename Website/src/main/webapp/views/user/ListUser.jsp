@@ -107,8 +107,8 @@
                                                         <td>${user.getUsername()}</td>
                                                         <td>${user.getPhone()}</td>
                                                         <td>${user.getRole()}</td>
-                                                        <td>${user.getCreated_at()}</td>
-                                                        <td>${user.getUpdated_at()}</td>
+                                                        <td>${user.getCreatedAt()}</td>
+                                                        <td>${user.getUpdatedAt()}</td>
                                                         <td>
                                                             <a href="./GoPageEditUserServlet?id=${user.getId()}" type="button" class="btn btn-outline-info">Edit</a>
                                                         </td>

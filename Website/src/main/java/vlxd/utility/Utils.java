@@ -76,8 +76,8 @@ public class Utils {
     	return null;
     }
     
-    public static String formatVND(String amount) {
-    	String replaceAmount = amount.replace(".", "");
+    public static String formatStringWithoutDot(String str) {
+    	String replaceAmount = str.replace(".", "");
     	return replaceAmount;
     }
 

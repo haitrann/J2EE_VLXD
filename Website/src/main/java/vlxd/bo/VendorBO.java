@@ -94,6 +94,28 @@ public class VendorBO {
 		return vendors;
 	}
 	
+	public void updateDebtOfVendor(String id, String debt) {
+		VendorMapper mapper = null;
+		try {
+			VendorDTO vendor = new VendorDTO();
+			vendor.setId(Integer.valueOf(id));
+			vendor.setDebt(debt);
+			Timestamp updateAt = new Timestamp(System.currentTimeMillis());
+			vendor.setUpdatedAt(updateAt);
+			mapper = new VendorMapper();
+			mapper.updateDebtOfVendor(vendor);
+
+		} catch (Exception ex) {
+			Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				mapper.closeConnection();
+			} catch (Exception ex) {
+				Logger.getLogger(VendorBO.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
+	
 	public void editVendor(String id, String name, String address, String phone, String email) {
 		VendorMapper mapper = null;
 		try {
@@ -103,8 +125,8 @@ public class VendorBO {
 			vendor.setAddress(address);
 			vendor.setPhone(phone);
 			vendor.setEmail(email);
-			Timestamp update_at = new Timestamp(System.currentTimeMillis());
-			vendor.setUpdated_at(update_at);
+			Timestamp updateAt = new Timestamp(System.currentTimeMillis());
+			vendor.setUpdatedAt(updateAt);
 			mapper = new VendorMapper();
 			mapper.editVendor(vendor);
 

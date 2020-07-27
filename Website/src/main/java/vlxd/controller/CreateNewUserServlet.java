@@ -37,7 +37,7 @@ public class CreateNewUserServlet extends HttpServlet {
 		ArrayList<UserDTO> userCheck = userBO.checkUserAvailable(username);
 
 		if (confirmPassword.equals(passText) == true && userCheck.isEmpty() == true && username.length() >= 6
-				&& name.length() > 0 && phone.length() > 9 && role.length() > 0) {
+				&& name.length() > 0 && phone.length() >= 9 && role.length() > 0) {
 			String password = Utils.Encrypt(passText);
 			userBO.createUser(name, email, phone, username, role, password);
 		} else {

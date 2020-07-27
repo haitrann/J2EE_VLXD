@@ -99,8 +99,8 @@ public class UserMapper extends DBMapper {
 				user.setPhone(rs.getString("phone"));
 				user.setUsername(rs.getString("username"));
 				user.setRole(rs.getString("role"));
-				user.setCreated_at(rs.getTimestamp("created_at"));
-				user.setUpdated_at(rs.getTimestamp("updated_at"));
+				user.setCreatedAt(rs.getTimestamp("created_at"));
+				user.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 				users.add(user);
 			}
@@ -126,8 +126,8 @@ public class UserMapper extends DBMapper {
 				user.setPhone(rs.getString("phone"));
 				user.setUsername(rs.getString("username"));
 				user.setRole(rs.getString("role"));
-				user.setCreated_at(rs.getTimestamp("created_at"));
-				user.setUpdated_at(rs.getTimestamp("updated_at"));
+				user.setCreatedAt(rs.getTimestamp("created_at"));
+				user.setUpdatedAt(rs.getTimestamp("updated_at"));
 			}
 
 		} catch (Exception ex) {
@@ -154,8 +154,8 @@ public class UserMapper extends DBMapper {
 				user.setPhone(rs.getString("phone"));
 				user.setUsername(rs.getString("username"));
 				user.setRole(rs.getString("role"));
-				user.setCreated_at(rs.getTimestamp("created_at"));
-				user.setUpdated_at(rs.getTimestamp("updated_at"));
+				user.setCreatedAt(rs.getTimestamp("created_at"));
+				user.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 				users.add(user);
 			}
@@ -179,7 +179,7 @@ public class UserMapper extends DBMapper {
 			preparedStmt.setString(3, user.getPhone());
 			preparedStmt.setString(4, user.getRole());
 			preparedStmt.setString(5, user.getUsername());
-			preparedStmt.setTimestamp(6, user.getUpdated_at());
+			preparedStmt.setTimestamp(6, user.getUpdatedAt());
 			preparedStmt.setInt(7, user.getId());
 
 			preparedStmt.executeUpdate();
@@ -194,7 +194,7 @@ public class UserMapper extends DBMapper {
 			String sqlStr = "UPDATE user SET status=0, updated_at=? WHERE id=? AND status=1";
 
 			PreparedStatement preparedStmt = getConnection().prepareStatement(sqlStr);
-			preparedStmt.setTimestamp(1, user.getUpdated_at());
+			preparedStmt.setTimestamp(1, user.getUpdatedAt());
 			preparedStmt.setInt(2, user.getId());
 
 			preparedStmt.executeUpdate();

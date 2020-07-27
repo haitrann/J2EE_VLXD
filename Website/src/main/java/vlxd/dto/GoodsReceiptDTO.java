@@ -23,7 +23,7 @@ public class GoodsReceiptDTO {
 		return total;
 	}
 	
-	public void setName(String total) {
+	public void setTotal(String total) {
 		this.total = total;
 	}
 	
@@ -31,7 +31,7 @@ public class GoodsReceiptDTO {
 		return paid;
 	}
 	
-	public void setPrice(String paid) {
+	public void setPaid(String paid) {
 		this.paid = paid;
 	}
 	
@@ -51,11 +51,11 @@ public class GoodsReceiptDTO {
 		this.user = user;
 	}
 	
-	public Timestamp getCreated_at() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 	
-	public void setCreated_at(Timestamp createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 	

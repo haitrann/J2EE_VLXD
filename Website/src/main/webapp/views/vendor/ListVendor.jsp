@@ -110,9 +110,9 @@
                                                         <td>${vendor.getAddress()}</td>
                                                         <td>${vendor.getPhone()}</td>
                                                         <td>${vendor.getEmail()}</td>
-                                                        <td>${vendor.getDebt()}</td>                                                        
-                                                        <td>${vendor.getCreated_at()}</td>
-                                                        <td>${vendor.getUpdated_at()}</td>
+                                                        <td class="currency">${vendor.getDebt()}</td>                                                        
+                                                        <td>${vendor.getCreatedAt()}</td>
+                                                        <td>${vendor.getUpdatedAt()}</td>
                                                         <td>
                                                             <a href="./GoPageEditVendorServlet?id=${vendor.getId()}" type="button" class="btn btn-outline-info">Edit</a>
                                                         </td>
@@ -176,6 +176,13 @@
 	<%@include file="../layouts/importscript.jsp"%>
 
 	<script type="text/javascript">
+		$(function () {
+			$('.currency').each(function() {
+				var currency = Number($(this).text());
+				$(this).text(currency.toLocaleString('vi'));
+			})
+		});
+		
         function deleteVendor(id) {
             $('#vendorId').val(id);
             $("#confirmDeleteVendor").modal('show');

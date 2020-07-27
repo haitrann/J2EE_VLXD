@@ -52,16 +52,18 @@
 								</div>
 
 								<div class="card-body">
-									<form id="goods-create" class="form" action="./CreateNewUserServlet" method="POST">
-
-
+									<form id="goods-create" class="form" method="POST">
 										<div class="row">
 											<div class="col-md-5">
 												<div class="form-group required">
 													<label class="control-label">Vendor</label>
 													<div>
-														<input id="name" name="name" type="text" class="form-control"
-															value="" placeholder="Vendor name">
+														<select class="form-control" onchange="updateVendor(this)">
+															<option value="">--- Choose Vendor ---</option>
+															<c:forEach items="${listVendor}" var="vendor">
+																<option value="${vendor.getId()}">${vendor.getName()}</option>
+															</c:forEach>
+														</select>
 													</div>
 												</div>
 												<!-- /input-group -->
@@ -73,20 +75,15 @@
 											<div class="col-md-5"></div>
 										</div>
 
-										<div class="row">
-											<div class="col-md-5">
-												<input id="vendor-id" name="vendor-id" type="hidden" value="1">
-												<button type="button" class="btn btn-success">
-													Vendor <span class="badge badge-light">Sun house</span>
-												</button>
-											</div>
-										</div>
-
 										<br>
 
 										<!-- Editable table -->
 										<div class="card">
 											<h3 class="card-header text-center font-weight-bold text-uppercase py-4">Goods Receipt</h3>
+											<input id="vendor-id" name="vendor-id" type="hidden">
+											<button type="button" class="btn btn-success">
+												<span id="vendor-name" name="vendor-name" class="badge badge-light">Vendor</span>
+											</button>
 											<div class="card-body">
 												<div id="table-editable" class="table-editable">
 													<span class="table-add float-right mb-3 mr-2">
@@ -134,7 +131,7 @@
 										<div class="row justify-content-end">
 											<div class="col-md-5 d-flex flex-row">
 												<h4 style="width: 251px;">Debt:</h4>
-												<input class="form-control" id="debt" type="text" disabled>
+												<input class="form-control" id="debt" name="debt" type="text" disabled>
 											</div>
 										</div>
 
@@ -173,6 +170,9 @@
 			window.data = [];
 			window.paymentTotal = 0;
 			window.debt = 0;
+			window.vendorId = 0;
+			window.paid = 0;
+			
 			
 			$("#paid").on({
 				input: function () {
@@ -188,28 +188,27 @@
 					alert('Vui long chon san pham');
 					return false;
 				}
-				create()
+				createGoodsReceipt();
 			});
-
-			const newTr = `
-				<tr>
-					<td class="pt-3-half">
-						<select class="form-control" onchange="updateProduct(this)">
-							<option value="">--- Chọn sản phẩm ---</option>
-							<c:forEach items="${listProduct}" var="product">
-								<option value="${product.getId()}">${product.getName()}</option>
-							</c:forEach>
-						</select>
-					</td>
-					<td class="pt-3-half currency" onblur="updateQuantity(this)" contenteditable="true"></td>
-					<td class="pt-3-half currency" onblur="updateAmount(this)" contenteditable="true"></td>
-					<td class="pt-3-half total"></td>
-					<td>
-						<span class="table-remove">
-							<button type="button" class="btn btn-primary btn-outline-danger">Remove</button>
-						</span>
-					</td>
-				</tr>`;
+			
+			const newTr = `<tr>
+								<td class="pt-3-half">
+									<select class="form-control" onchange="updateProduct(this)">
+										<option value='-1'>--- Choose Product ---</option>
+										<c:forEach items="${listProduct}" var="product">
+											<option value="${product.getId()}">${product.getName()}</option>
+										</c:forEach>
+									</select>
+								</td>
+								<td class="pt-3-half currency" onblur="updateQuantity(this)" contenteditable="true"></td>
+								<td class="pt-3-half currency" onblur="updateAmount(this)" contenteditable="true"></td>
+								<td class="pt-3-half total"></td>
+								<td>
+									<span class="table-remove">
+										<button type="button" class="btn btn-primary btn-outline-danger">Remove</button>
+									</span>
+								</td>
+							</tr>`;
 
 			$('.table-add').on('click', 'i', () => {
 				$tableID.find('table tbody').append(newTr);
@@ -296,6 +295,13 @@
 			input[0].setSelectionRange(caret_pos, caret_pos);
 		}
 		
+		function updateVendor(t) {
+			var currentOption = $(t).find('option:selected');
+			$('#vendor-id').val(currentOption.val());
+			vendorId = currentOption.val();
+			$('#vendor-name').text(currentOption.text());
+		}
+		
 		function addRowInTable() {
 			data.push({
 				product: -1,
@@ -345,20 +351,21 @@
 			$('#debt').val(debt.toLocaleString('vi'));
 		}
 
-		function create() {
-			alert('Hello')
-			var vendor = $('#vendor-id').val();
-			/*
-			fetch('/PostGoods', {
-				method: 'POST',
-				body: {
-					products: data,
-					vendor
-				}
-			})
-			.then(res => res.json())
-			.then(res => console.log(res))
-			*/
+		function createGoodsReceipt() {
+			paid = $('#paid').val();
+			debt = $('#debt').val();
+			$.ajax({
+					type: "POST",
+					url: "./CreateGoodsReceivedNote",
+					data: {
+						products: JSON.stringify(data),
+						vendorId,
+						paid,
+						paymentTotal,
+						debt
+					}
+				})
+			console.log(data);
 		}
 		
 	</script>

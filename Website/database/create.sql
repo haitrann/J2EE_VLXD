@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Product(
 );
 
 CREATE TABLE IF NOT EXISTS Goods_Receipt(
-	id INT,
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	total VARCHAR(255) DEFAULT NULL,
 	paid VARCHAR(255) DEFAULT NULL,
 	vendor_id INT,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Goods_Receipt(
 );
 
 CREATE TABLE IF NOT EXISTS Goods_Receipt_Details(
-	id INT,
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	total VARCHAR(255) DEFAULT NULL,
 	unit_price VARCHAR(255) DEFAULT NULL,
 	quantity INT,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS Goods_Receipt_Details(
 );
 
 CREATE TABLE IF NOT EXISTS Warehouse(
-	id INT,
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	product_id INT,
 	quantity_in_stock INT
 );

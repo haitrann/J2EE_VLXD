@@ -60,19 +60,19 @@ public class VendorDTO {
 		this.debt = debt;
 	}
 	
-	public Timestamp getCreated_at() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 	
-	public void setCreated_at(Timestamp createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 	
-	public Timestamp getUpdated_at() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
 	
-	public void setUpdated_at(Timestamp updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 	

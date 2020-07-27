@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vlxd.bo.ProductBO;
+import vlxd.utility.Utils;
 
 @WebServlet(name = "CreateNewProductServlet", urlPatterns = { "/CreateNewProductServlet" })
 public class CreateNewProductServlet extends HttpServlet {
@@ -20,7 +21,7 @@ public class CreateNewProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String name = request.getParameter("name").trim();
-		String price = request.getParameter("price").trim();
+		String price =  Utils.formatStringWithoutDot(request.getParameter("price").trim());
 		String unit = request.getParameter("unit");
 		Integer category_id = Integer.valueOf(request.getParameter("category_id"));
 

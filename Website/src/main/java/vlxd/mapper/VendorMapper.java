@@ -15,7 +15,7 @@ public class VendorMapper extends DBMapper {
 
 	public void createVendor(VendorDTO newVendor) {
 		try {
-			String sqlStr = "INSERT into vendor (name,address,phone,email) VALUE (?,?,?,?)";
+			String sqlStr = "INSERT into vendor (name,address,phone,email,debt) VALUE (?,?,?,?,?)";
 
 			PreparedStatement preparedStmt = getConnection().prepareStatement(sqlStr);
 
@@ -23,6 +23,7 @@ public class VendorMapper extends DBMapper {
 			preparedStmt.setString(2, newVendor.getAddress());
 			preparedStmt.setString(3, newVendor.getPhone());
 			preparedStmt.setString(4, newVendor.getEmail());
+			preparedStmt.setString(5, String.valueOf(0));
 
 			preparedStmt.executeUpdate();
 
@@ -45,8 +46,8 @@ public class VendorMapper extends DBMapper {
 				vendor.setPhone(rs.getString("phone"));
 				vendor.setEmail(rs.getString("email"));
 				vendor.setDebt(rs.getString("debt"));
-				vendor.setCreated_at(rs.getTimestamp("created_at"));
-				vendor.setUpdated_at(rs.getTimestamp("updated_at"));
+				vendor.setCreatedAt(rs.getTimestamp("created_at"));
+				vendor.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 				vendors.add(vendor);
 			}
@@ -71,8 +72,8 @@ public class VendorMapper extends DBMapper {
 				vendor.setPhone(rs.getString("phone"));
 				vendor.setEmail(rs.getString("email"));
 				vendor.setDebt(rs.getString("debt"));
-				vendor.setCreated_at(rs.getTimestamp("created_at"));
-				vendor.setUpdated_at(rs.getTimestamp("updated_at"));
+				vendor.setCreatedAt(rs.getTimestamp("created_at"));
+				vendor.setUpdatedAt(rs.getTimestamp("updated_at"));
 				
 			}
 
@@ -99,8 +100,8 @@ public class VendorMapper extends DBMapper {
 				vendor.setPhone(rs.getString("phone"));
 				vendor.setEmail(rs.getString("email"));
 				vendor.setDebt(rs.getString("debt"));
-				vendor.setCreated_at(rs.getTimestamp("created_at"));
-				vendor.setUpdated_at(rs.getTimestamp("updated_at"));
+				vendor.setCreatedAt(rs.getTimestamp("created_at"));
+				vendor.setUpdatedAt(rs.getTimestamp("updated_at"));
 
 				vendors.add(vendor);
 			}
@@ -110,6 +111,22 @@ public class VendorMapper extends DBMapper {
 		}
 
 		return vendors;
+	}
+	
+	public void updateDebtOfVendor(VendorDTO vendor) {
+		try {
+			String sqlStr = "UPDATE vendor SET debt=?, updated_at=? WHERE id=?";
+			PreparedStatement preparedStmt = getConnection().prepareStatement(sqlStr);
+
+			preparedStmt.setString(1, vendor.getDebt());
+			preparedStmt.setTimestamp(2, vendor.getUpdatedAt());
+			preparedStmt.setInt(3, vendor.getId());
+
+			preparedStmt.executeUpdate();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public void editVendor(VendorDTO vendor) {
@@ -121,7 +138,7 @@ public class VendorMapper extends DBMapper {
 			preparedStmt.setString(2, vendor.getAddress());
 			preparedStmt.setString(3, vendor.getPhone());
 			preparedStmt.setString(4, vendor.getEmail());
-			preparedStmt.setTimestamp(5, vendor.getUpdated_at());
+			preparedStmt.setTimestamp(5, vendor.getUpdatedAt());
 			preparedStmt.setInt(6, vendor.getId());
 
 			preparedStmt.executeUpdate();
