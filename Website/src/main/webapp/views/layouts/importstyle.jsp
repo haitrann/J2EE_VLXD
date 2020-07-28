@@ -8,7 +8,7 @@
     <meta name="msapplication-navbutton-color" content="#007bff">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#007bff">
-<link rel="icon" href="${pageContext.request.contextPath}/views/public/img/ducfavicon.ico" sizes="16x16">
+<link rel="icon" href="${pageContext.request.contextPath}/views/public/img/avery-logo.png" sizes="16x16">
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/views/public/lib/font-awesome/css/fontawesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/views/public/lib/font-awesome-5/css/fontawesome.min.css">

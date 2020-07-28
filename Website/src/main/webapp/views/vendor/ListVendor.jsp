@@ -70,7 +70,7 @@
 										</div>
 										
 										<div class="col-md-6 col-6">
-											<nav class="navbar navbar-light bg-light">
+											<nav class="navbar navbar-light">
 												<form class="form-inline" action="./ListVendorServlet">
 													<input id="searchy" name="search"
 														class="form-control mr-sm-2" type="search"
